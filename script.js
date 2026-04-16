@@ -1,3 +1,6 @@
+const progressBar = document.getElementById('progress-bar');
+const currentTimeEl = document.getElementById('current-time');
+const durationEl = document.getElementById('duration');
 const audio = document.getElementById('audio-player');
 const playBtn = document.getElementById('play-pause');
 const prevBtn = document.getElementById('prev');
@@ -62,4 +65,23 @@ audio.addEventListener('ended', () => {
     loadSong(currentIndex);
     audio.play();
     playBtn.innerText = "暂停";
+});
+function formatTime(seconds) {
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? '0' + sec : sec}`;
+}
+
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progressPercent;
+        currentTimeEl.innerText = formatTime(audio.currentTime);
+        durationEl.innerText = formatTime(audio.duration);
+    }
+});
+
+progressBar.addEventListener('input', () => {
+    const seekTime = (progressBar.value / 100) * audio.duration;
+    audio.currentTime = seekTime;
 });
