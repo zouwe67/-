@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    /* 背景图：你可以找一张高清油菜花图片放在 images 文件夹 */
+    background: url('images/rapeseed-field.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.2); /* 淡淡的阴影，让白色文字更清晰 */
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); /* 毛玻璃效果，增加浪漫感 */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 350px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls button {
+    background: #ffcc00; /* 油菜花的黄色 */
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #5d4300;
+    transition: 0.3s;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+    background: #ffe066;
+}
+
+.playlist {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.playlist li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.playlist li:hover {
+    background: rgba(255, 204, 0, 0.3);
+}
+
+.active-song {
+    color: #ffcc00;
+    font-weight: bold;
+}

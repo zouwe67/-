@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>田野里的浪漫交响</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>金色的旋律</h1>
+            <p>油菜花开时的浪漫音频</p>
+        </header>
+
+        <div class="player-container">
+            <div class="song-info">
+                <h2 id="current-title">请选择歌曲</h2>
+            </div>
+            
+            <div class="controls">
+                <button id="prev">上一个</button>
+                <button id="play-pause">播放</button>
+                <button id="next">下一个</button>
+            </div>
+            
+            <audio id="audio-player" src=""></audio>
+        </div>
+
+        <ul class="playlist" id="playlist">
+            <li data-src="music/song1.mp3">第一首：春天的歌</li>
+            <li data-src="music/song2.mp3">第二首：油菜花开</li>
+            <li data-src="music/song3.mp3">第三首：田野漫步</li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
