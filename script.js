@@ -85,3 +85,39 @@ progressBar.addEventListener('input', () => {
     const seekTime = (progressBar.value / 100) * audio.duration;
     audio.currentTime = seekTime;
 });
+// --- 增强版进度条逻辑开始 ---
+
+// 辅助函数：将秒数转换成 0:00 格式
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? '0' + sec : sec}`;
+}
+
+// 1. 监听音频播放进度更新 (实时更新进度条和左侧时间)
+audio.addEventListener('timeupdate', () => {
+    if (!isNaN(audio.duration)) {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progressPercent;
+        currentTimeEl.innerText = formatTime(audio.currentTime);
+        durationEl.innerText = formatTime(audio.duration);
+    }
+});
+
+// 2. 监听元数据加载 (确保一点击歌名就能拿到总时长)
+audio.addEventListener('loadedmetadata', () => {
+    if (!isNaN(audio.duration)) {
+        durationEl.innerText = formatTime(audio.duration);
+    }
+});
+
+// 3. 监听手动拖动进度条
+progressBar.addEventListener('input', () => {
+    if (!isNaN(audio.duration)) {
+        const seekTime = (progressBar.value / 100) * audio.duration;
+        audio.currentTime = seekTime;
+    }
+});
+
+// --- 增强版进度条逻辑结束 ---
